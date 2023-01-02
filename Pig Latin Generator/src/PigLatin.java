@@ -1,7 +1,16 @@
 import java.util.*;
-
+/**
+ * Pig Latin Generator
+ * <p>
+ * A simple program that takes in user input as a String, then translates it to pig latin!
+ * Users can view rules for pig latin under the menu they're greeted with at program launch.
+ *
+ * @author Ayo Arulogun on GitHub
+ *
+ * @version January 1, 2023
+ */
 public class PigLatin {
-    public static final String BORDER = "===========================";
+    public static final String BORDER = "==========================="; //Just for aesthetics
     public static final String RULE_ONE = "1. If the word begins with a constant, move the constant to the end " +
             "of the word and add 'ay'. Example: \"Pig latin\" becomes \"Igpay atinlay\".";
     public static final String RULE_TWO = "2. If the word begins with a digraph (th, sh, ch, etc.) move the digraph " +
@@ -9,37 +18,41 @@ public class PigLatin {
     public static final String RULE_THREE = "3. If the word begins with a vowel, add 'way' to the end of the word. " +
             "Example: \"Is this an apple?\" becomes \"Isway isthay anway appleway?\"";
 
-    public static String pigLatinIt(String s) { //FIXME: Not working properly, see debugger
-        String pigS = "";
-        int firstLetter = 0;
+    public static String pigLatinIt(String s) {
+        StringBuilder pigS = new StringBuilder();
 
         for (int i = 0; i < s.length(); i++) {
-            if (s.substring(i, i + 1).equals(" ")) {
-                if (isDigraph(s.substring(firstLetter, firstLetter + 2))) {
-                    pigS += s.substring(firstLetter + 2, i) + s.substring(firstLetter, firstLetter + 2) + "ay ";
-                } else if (isVowel(s.substring(firstLetter, firstLetter + 1))){
-                    pigS += s.substring(firstLetter, i) + "way ";
+            if (s.charAt(i) == ' ') {
+                if (isVowel(s.substring(0, 1))){ //Must come first in case there's an 'a' by itself in the string
+                    pigS.append(s, 0, i).append("way ");
+                } else if (isDigraph(s.substring(0, 2))) {
+                    pigS.append(s, 2, i).append(s, 0, 2).append("ay ");
                 } else {
-                    pigS += s.substring(firstLetter + 1, i) + s.substring(firstLetter, firstLetter + 1) + "ay";
+                    pigS.append(s, 1, i).append(s.charAt(0)).append("ay ");
                 }
-                firstLetter = i + 1;
-            } else if ( i == s.length() - 1 && pigS.equals("")) {
-                pigS += ""; //TODO: Finish this part of the method, checking for if only one word
+
+                s = s.substring(i + 1);
+                i = 0;
+            } else if (!s.contains(" ")) {
+                if (isVowel(s.substring(0, 1))){
+                    pigS.append(s).append("way");
+                } else if (isDigraph(s.substring(0, 2))) {
+                    pigS.append(s.substring(2)).append(s, 0, 2).append("ay");
+                } else {
+                    pigS.append(s.substring(1)).append(s.charAt(0)).append("ay");
+                }
+                s = "";
             }
         }
-        return pigS;
+        return pigS.toString().toLowerCase();
     }
 
     public static boolean isDigraph(String s) {
-        if (s.equals("ch") ||s.equals("sh") || s.equals("th") || s.equals("wh") || s.equals("ph"))
-            return true;
-        return false;
+        return (s.equals("ch") ||s.equals("sh") || s.equals("th") || s.equals("wh") || s.equals("ph"));
     }
 
     public static boolean isVowel(String s) {
-        if (s.equals("a") || s.equals("e") || s.equals("i") || s.equals("o") || s.equals("u"))
-            return true;
-        return false;
+        return (s.equals("a") || s.equals("e") || s.equals("i") || s.equals("o") || s.equals("u"));
     }
 
 
@@ -47,21 +60,20 @@ public class PigLatin {
         Scanner sc = new Scanner(System.in);
 
         //Greet user
-        System.out.println("Welcome to the Pig Latin Converter!");
-        System.out.println("What would you like to do?");
+        System.out.println("Welcome to the Pig Latin Converter!\nWhat would you like to do?");
 
         do {
-            System.out.println("1. Convert text to pig latin\n2. Explain pig latin\n3. Exit program");
             try {
+                System.out.println("1. Convert text to pig latin\n2. Explain pig latin\n3. Exit program");
                 int select = sc.nextInt();
                 if (select == 1) {
-                    System.out.println(BORDER + "\nWhat is the text you would like to convert?");
-                    String convert = sc.next();
-                    System.out.println("Your original text was: " + convert + ". In pig latin it is:\n");
-                    System.out.println(pigLatinIt(convert));
+                    System.out.println(BORDER + "\nWhat is the text you would like to convert? Only use letters!");
+                    sc.nextLine();
+                    String convert = sc.nextLine();
+                    System.out.print("Your original text was: \"" + convert + "\". \nIn pig latin it is: ");
+                    System.out.println(pigLatinIt(convert) + "\n" + BORDER);
                 } else if (select == 2) {
-                    System.out.println(BORDER + "\nPig latin is a sort of fake language that moves the first letter of " +
-                            "a word to the end of the word and adds 'ay' to the end. The rules are below:");
+                    System.out.println(BORDER + "\nPig latin is a language formed from English. The rules are below:");
                     System.out.println(RULE_ONE + "\n" + RULE_TWO + "\n" + RULE_THREE + "\n" + BORDER);
                 } else if (select == 3) {
                     break;
@@ -69,7 +81,8 @@ public class PigLatin {
                     System.out.println("Invalid option. Please try again.");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Enter a valid number!");
+                System.out.println("Invalid option. Please enter a valid number.");
+                sc.next();
             }
 
         } while (true);
