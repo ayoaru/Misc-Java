@@ -1,2 +1,2 @@
 # Misc-Java
-Collection of small programs written w/ Java.
+Collection of simple programs written w/ Java.
