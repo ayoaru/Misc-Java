@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Misc Java.iml" filepath="$PROJECT_DIR$/Misc Java.iml" />
       <module fileurl="file://$PROJECT_DIR$/Pig Latin Generator/Pig Latin Generator.iml" filepath="$PROJECT_DIR$/Pig Latin Generator/Pig Latin Generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Rock Paper Scissors/Rock Paper Scissors.iml" filepath="$PROJECT_DIR$/Rock Paper Scissors/Rock Paper Scissors.iml" />
     </modules>
   </component>
 </project>

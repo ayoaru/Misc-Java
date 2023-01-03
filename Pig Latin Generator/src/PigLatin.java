@@ -19,11 +19,11 @@ public class PigLatin {
             "Example: \"Is this an apple?\" becomes \"Isway isthay anway appleway?\"";
 
     public static String pigLatinIt(String s) {
-        StringBuilder pigS = new StringBuilder();
+        StringBuilder pigS = new StringBuilder(); //Prior to warnings, this line read String pigS = "";
 
         for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == ' ') {
-                if (isVowel(s.substring(0, 1))){ //Must come first in case there's an 'a' by itself in the string
+            if (s.charAt(i) == ' ') { //Prior to warnings used pigS +=, appending is cleaner remember to use it!
+                if (isVowel(s.substring(0, 1))){ //Must come to avoid errors w/ an 'a' by itself in String input
                     pigS.append(s, 0, i).append("way ");
                 } else if (isDigraph(s.substring(0, 2))) {
                     pigS.append(s, 2, i).append(s, 0, 2).append("ay ");
