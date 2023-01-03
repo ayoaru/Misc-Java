@@ -87,6 +87,6 @@ public class PigLatin {
 
         } while (true);
 
-        System.out.println(BORDER + "\nThank you for using the Pig Latin Converter. Goodbye!");
+        System.out.println(BORDER + "\nThank you for using the pig latin converter. Goodbye!");
     }
 }
