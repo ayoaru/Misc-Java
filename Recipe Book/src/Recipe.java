@@ -21,6 +21,8 @@ public class Recipe implements Serializable {
     private int prepTime;
     private int cookTime;
     private ArrayList<String> ingredients;
+    private ArrayList<String> tags;
+    private String instructions;
     private static int recipeCount = 0;
 
     /*
@@ -37,6 +39,8 @@ public class Recipe implements Serializable {
         this.prepTime = prepTime;
         this.cookTime = cookTime;
         this.ingredients = ingredients;
+        tags = new ArrayList<>();
+        instructions = "";
         recipeCount++;
         recipeID = "R" + recipeCount;
     }
@@ -82,6 +86,9 @@ public class Recipe implements Serializable {
     public String getName() {
         return name;
     }
+    public String getAuthor() {
+        return author;
+    }
     public String getCountry() {
         return country;
     }
@@ -94,9 +101,19 @@ public class Recipe implements Serializable {
     public ArrayList<String> getIngredients() {
         return ingredients;
     }
+    public ArrayList<String> getTags() {
+        return tags;
+    }
+    public String getInstructions() {
+        return instructions;
+    }
+
     //Setters
     public void setName(String name) {
         this.name = name;
+    }
+    public void setAuthor(String author) {
+        this.author = author;
     }
     public void setCountry(String country) {
         this.country = country;
@@ -107,6 +124,16 @@ public class Recipe implements Serializable {
     public void setCookTime(int cookTime) {
         this.cookTime = cookTime;
     }
+    public void setIngredients(ArrayList<String> ingredients) {
+        this.ingredients = ingredients;
+    }
+    public void setTags(ArrayList<String> tags) {
+        this.tags = tags;
+    }
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+
 
     //Other methods
     @Override
