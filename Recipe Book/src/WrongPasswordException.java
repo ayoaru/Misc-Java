@@ -2,7 +2,7 @@
  * Exception to be thrown when the user attempts to log in to
  * an accoutn with the incorrect password.
  *
- * @author Ayo Arulogun
+ * @author SHola Arulogun
  *
  * @version January 6, 2023
  */

@@ -8,6 +8,9 @@ import java.util.Hashtable;
  * Class that handles User objects, so that people can create an account,
  * login, and save recipes
  *
+ * @author Shola Arulogun
+ *
+ * @version Janurary 8, 2022
  */
 public class User implements Serializable {
 

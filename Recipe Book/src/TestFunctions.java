@@ -11,7 +11,7 @@ import java.util.Scanner;
  * Test various aspects of the user and recipe classes. Objects created in
  * main method for these test cases.
  *
- * @author Ayo Arulogun
+ * @author Shola Arulogun
  *
  * @version January 4, 2023
  */

@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Class that handles the creation of Recipe objects. Implements serializable
  * for data persistence, allows Recipe objects to be read from a file.
  *
- * @author Ayo Arulogun
+ * @author Shola Arulogun
  *
  * @version January 4, 2023
  */

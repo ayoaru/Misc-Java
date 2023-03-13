@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * GUI interface for users to view, edit, and add recipes for themselves
  * or others to view.
  *
- * @author Ayo Arulogun
+ * @author Shola Arulogun
  *
  * @version January 4, 2023
  */
