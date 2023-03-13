@@ -1,3 +1,4 @@
+import java.util.Scanner;
 /*
  * RecipeMain class
  * <p>
@@ -9,6 +10,11 @@
  */
 
 public class RecipeMain {
+    public static void main(String[] args){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("1. Create account\n2.Log in");
+
+    }
 
 
 }
