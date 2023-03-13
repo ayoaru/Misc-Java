@@ -46,7 +46,7 @@ public class User implements Serializable {
         oos.close();
     }
 
-    public void updateUser() throws IOException { //TODO: Why did I create this it's literally the same as saveUser lol?
+    public void updateUser() throws IOException { //TODO: Why did I create this it's the same as saveUser lol?
         String path = "./Recipe Book/src/users/" + this.username;
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path)); //Output obj to a file
         oos.writeObject(this);
@@ -64,9 +64,9 @@ public class User implements Serializable {
             if (u.getPassword().equals(password))
                 return u;
             else
-                throw new WrongPasswordException();
+                throw new WrongPasswordException("Incorrect password!");
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Error loading!");
+            System.out.println("Error loading user!");
             return null;
         }
     }
@@ -99,7 +99,7 @@ public class User implements Serializable {
             counter = (Hashtable) ois.readObject();
             ois.close();
         } catch (Exception e) {
-            System.out.println("Error reading counter hashtable.");
+            System.out.println("Error reading user counter hashtable.");
             e.printStackTrace();
         }
         return (int) counter.get("Users");
